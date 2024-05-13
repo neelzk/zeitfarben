@@ -12,19 +12,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-
     override fun onResume() {
         super.onResume()
+        val cl = findViewById<ConstraintLayout>(R.id.clayout)
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val cl = findViewById<ConstraintLayout>(R.id.clayout)
 
-        if (hour < 2 || hour > 5) {
-            cl.setBackgroundColor(Color.RED)
-        } else if (hour < 3) {
-            cl.setBackgroundColor(Color.BLUE)
-        } else {
-            cl.setBackgroundColor(Color.GREEN)
+        when (hour) {
+            2 -> cl.setBackgroundColor(Color.BLUE)
+            3 -> cl.setBackgroundColor(Color.GREEN)
+            else -> cl.setBackgroundColor(Color.RED)
         }
     }
 }
