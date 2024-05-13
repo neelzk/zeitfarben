@@ -10,23 +10,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
     }
+
 
     override fun onResume() {
         super.onResume()
         val calendar = Calendar.getInstance()
-        val hour = calendar.get(Calendar.HOUR)
-        findViewById<ConstraintLayout>(R.id.clayout).setBackgroundColor(Color.RED)
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val cl = findViewById<ConstraintLayout>(R.id.clayout)
 
-        if (hour < 1) {
-            findViewById<ConstraintLayout>(R.id.clayout).setBackgroundColor(Color.CYAN)
-        } else if (hour < 2) {
-            findViewById<ConstraintLayout>(R.id.clayout).setBackgroundColor(Color.BLUE)
+        if (hour < 2 || hour > 5) {
+            cl.setBackgroundColor(Color.RED)
         } else if (hour < 3) {
-            findViewById<ConstraintLayout>(R.id.clayout).setBackgroundColor(Color.GREEN)
+            cl.setBackgroundColor(Color.BLUE)
+        } else {
+            cl.setBackgroundColor(Color.GREEN)
         }
     }
 }
